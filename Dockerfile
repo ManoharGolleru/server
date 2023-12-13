@@ -10,11 +10,6 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port available to the world outside this container
-EXPOSE 80
+# Run the application. App Engine will set the $PORT environment variable to tell you what port to listen on.
+CMD ["uvicorn", "Fin3:app", "--host", "0.0.0.0", "--port", "$PORT"]
 
-# Define environment variable
-ENV PORT 80
-
-# Run the application
-CMD ["uvicorn", "Fin3:app", "--host", "0.0.0.0", "--port", "80"]
