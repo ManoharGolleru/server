@@ -201,5 +201,3 @@ def send_to_api_sync(prompt):
         logging.error(f"Error sending request to API: {e}")
         return []
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5678, log_level="info")
