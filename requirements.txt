@@ -2,8 +2,3 @@ fastapi
 uvicorn
 requests
 SpeechRecognition
-logging
-csv
-concurrent.futures
-requests
-asyncio
