@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+SpeechRecognition
+json
+logging
+csv
+concurrent.futures
+requests
+asyncio
