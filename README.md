@@ -1,7 +1,7 @@
 ```mermaid
 flowchart TD
     %% Start
-    A[Start] --> B{Define your Research Question}
+    A[Start] --> B{Define Research Question}
 
     %% Research Question Types
     B --> C[Comparing Groups]
@@ -9,7 +9,7 @@ flowchart TD
     B --> E[Predicting Outcomes]
 
     %% Comparing Groups
-    C --> F{What is your Dependent Variable Type?}
+    C --> F{Dependent Variable Type}
     F --> G[Continuous]
     F --> H[Categorical]
 
@@ -19,26 +19,26 @@ flowchart TD
     I --> K[More than Two Groups]
 
     %% Two Groups
-    J --> L{Are Groups Independent?}
+    J --> L{Are Groups Independent}
     L --> M[Independent]
     L --> N[Paired or Related]
 
     %% Independent Groups
-    M --> O{Is Sample Size Adequate? (n >= 30 per group)}
+    M --> O{Sample Size Adequate}
     O --> P[Yes]
     O --> Q[No]
 
-    P --> R{Assume Normality and Equal Variance?}
+    P --> R{Assume Normality and Equal Variance}
     R --> S[Yes]
     R --> T[No]
 
     S --> U[Independent Samples t-test]
     T --> V[Check Assumptions]
 
-    V --> W{Normality Test e.g., Shapiro-Wilk}
-    W --> X{Data Normally Distributed?}
-    X --> Y[Yes] --> Z{Homogeneity of Variance Test e.g., Levene's Test}
-    Z --> AA{Equal Variances?}
+    V --> W{Normality Test like Shapiro-Wilk}
+    W --> X{Data Normally Distributed}
+    X --> Y[Yes] --> Z{Homogeneity of Variance Test}
+    Z --> AA{Equal Variances}
     AA --> AB[Yes] --> AC[Independent Samples t-test]
     AA --> AD[No] --> AE[Welch's t-test]
     X --> AF[No] --> AG[Mann-Whitney U test]
@@ -46,36 +46,36 @@ flowchart TD
     Q --> AG[Mann-Whitney U test]
 
     %% Paired Groups
-    N --> AH{Is Sample Size Adequate? (n >= 30)}
+    N --> AH{Sample Size Adequate}
     AH --> AI[Yes]
     AH --> AJ[No]
 
-    AI --> AK{Normality of Differences?}
+    AI --> AK{Normality of Differences}
     AK --> AL[Yes] --> AM[Paired Samples t-test]
     AK --> AN[No] --> AO[Wilcoxon Signed-Rank test]
 
     AJ --> AO[Wilcoxon Signed-Rank test]
 
     %% More than Two Groups
-    K --> AP{Are Groups Independent?}
+    K --> AP{Are Groups Independent}
     AP --> AQ[Independent]
     AP --> AR[Repeated Measures]
 
-    AQ --> AS{Assume Normality and Equal Variance?}
+    AQ --> AS{Assume Normality and Equal Variance}
     AS --> AT[Yes] --> AU[One-Way ANOVA]
     AS --> AV[No] --> AW[Check Assumptions]
 
     AW --> AX{Normality Test}
-    AX --> AY{Data Normally Distributed?}
+    AX --> AY{Data Normally Distributed}
     AY --> AZ[Yes] --> BA{Homogeneity of Variance Test}
-    BA --> BB{Equal Variances?}
+    BA --> BB{Equal Variances}
     BB --> BC[Yes] --> AU[One-Way ANOVA]
     BB --> BD[No] --> BE[Welch's ANOVA]
     AY --> BF[No] --> BG[Kruskal-Wallis test]
 
-    AR --> BH{Assume Sphericity? Mauchly's Test}
+    AR --> BH{Assume Sphericity Test}
     BH --> BI[Yes] --> BJ[Repeated Measures ANOVA]
-    BH --> BK[No] --> BL[Apply Correction e.g., Greenhouse-Geisser]
+    BH --> BK[No] --> BL[Apply Correction like Greenhouse-Geisser]
     BL --> BJ[Repeated Measures ANOVA]
     BK --> BM[Friedman test]
 
@@ -84,7 +84,7 @@ flowchart TD
     BN --> BO[Dichotomous]
     BN --> BP[More than Two Categories]
 
-    BO --> BQ{Are Expected Frequencies >= 5?}
+    BO --> BQ{Expected Frequencies >= 5}
     BQ --> BR[Yes] --> BS[Chi-Square Test]
     BQ --> BT[No] --> BU[Fisher's Exact Test]
 
@@ -96,9 +96,9 @@ flowchart TD
     BW --> BY[At least One Ordinal]
     BW --> BZ[Both Categorical]
 
-    BX --> CA{Sample Size Adequate? n >= 30}
-    CA --> CB[Yes] --> CC{Linear Relationship?}
-    CC --> CD[Yes] --> CE{Data Normally Distributed?}
+    BX --> CA{Sample Size Adequate}
+    CA --> CB[Yes] --> CC{Linear Relationship}
+    CC --> CD[Yes] --> CE{Data Normally Distributed}
     CE --> CF[Yes] --> CG[Pearson Correlation]
     CE --> CH[No] --> CI[Spearman Correlation]
     CD --> CH[No] --> CI[Spearman Correlation]
@@ -112,11 +112,11 @@ flowchart TD
     CL --> CM[Continuous]
     CL --> CN[Categorical]
 
-    CM --> CO{Assumptions Met?}
+    CM --> CO{Assumptions Met}
     CO --> CP[Yes] --> CQ[Linear Regression]
     CO --> CR[No] --> CS[Consider Transformation or Non-parametric Regression]
 
-    CN --> CT{Binary Outcome?}
+    CN --> CT{Binary Outcome}
     CT --> CU[Yes] --> CV[Logistic Regression]
     CT --> CW[No] --> CX[Multinomial Logistic Regression]
 
