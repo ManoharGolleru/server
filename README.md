@@ -1,3 +1,5 @@
+
+```mermaid
 flowchart TD
     A[Start] --> B{What is your research question?}
     B --> C[Comparing means between groups]
