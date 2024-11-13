@@ -1,79 +1,124 @@
-
 ```mermaid
 flowchart TD
-    A[Start] --> B{What is your research question?}
-    B --> C[Comparing means between groups]
-    B --> D[Assessing relationships between variables]
-    B --> E[Predicting outcomes]
+    %% Start
+    A[Start] --> B{Define your Research Question}
 
-    C --> F{Type of data}
-    F --> G[Numeric (Continuous/Discrete)]
+    %% Research Question Types
+    B --> C[Comparing Groups]
+    B --> D[Assessing Relationships]
+    B --> E[Predicting Outcomes]
+
+    %% Comparing Groups
+    C --> F{What is your Dependent Variable Type?}
+    F --> G[Continuous (Interval/Ratio)]
     F --> H[Categorical (Nominal/Ordinal)]
 
-    G --> I{Number of groups}
-    I --> J[Two groups]
-    I --> K[More than two groups]
+    %% Dependent Variable is Continuous
+    G --> I{Number of Groups}
+    I --> J[Two Groups]
+    I --> K[More than Two Groups]
 
-    J --> L{Are the groups independent?}
+    %% Two Groups
+    J --> L{Are Groups Independent?}
     L --> M[Independent]
-    L --> N[Related/Paired]
+    L --> N[Paired/Related]
 
-    M --> O{Is data normally distributed?}
+    %% Independent Groups
+    M --> O{Is Sample Size Adequate? (n ≥ 30 per group)}
     O --> P[Yes]
     O --> Q[No]
 
-    P --> R[**Independent Samples t-test**]
-    Q --> S[**Mann-Whitney U test**]
+    P --> R{Assume Normality and Equal Variance?}
+    R --> S[Yes]
+    R --> T[No]
 
-    N --> T{Is data normally distributed?}
-    T --> U[Yes]
-    T --> V[No]
+    S --> U[**Independent Samples t-test**]
+    T --> V[Check Assumptions]
 
-    U --> W[**Paired Samples t-test**]
-    V --> X[**Wilcoxon Signed-Rank test**]
+    V --> W{Normality Test (e.g., Shapiro-Wilk)}
+    W --> X{Data Normally Distributed?}
+    X --> Y[Yes] --> Z{Homogeneity of Variance Test (e.g., Levene's Test)}
+    Z --> AA{Equal Variances?}
+    AA --> AB[Yes] --> AC[**Independent Samples t-test**]
+    AA --> AD[No] --> AE[**Welch's t-test**]
+    X --> AF[No] --> AG[**Mann-Whitney U test**]
 
-    K --> Y{Is data normally distributed?}
-    Y --> Z[Yes]
-    Y --> AA[No]
+    Q --> AG[**Mann-Whitney U test**]
 
-    Z --> AB[**ANOVA**]
-    AA --> AC[**Kruskal-Wallis test**]
+    %% Paired Groups
+    N --> AH{Is Sample Size Adequate? (n ≥ 30)}
+    AH --> AI[Yes]
+    AH --> AJ[No]
 
-    H --> AD{Type of categorical data}
-    AD --> AE[Nominal]
-    AD --> AF[Ordinal]
+    AI --> AK{Normality of Differences?}
+    AK --> AL[Yes] --> AM[**Paired Samples t-test**]
+    AK --> AN[No] --> AO[**Wilcoxon Signed-Rank test**]
 
-    AE --> AG[**Chi-Square test**]
-    AG --> AH{Are expected frequencies >5?}
-    AH --> AI[Yes] --> AJ[Proceed with Chi-Square]
-    AH --> AK[No] --> AL[**Fisher's Exact test**]
+    AJ --> AO[**Wilcoxon Signed-Rank test**]
 
-    AF --> AM[**Mann-Whitney U test** or **Kruskal-Wallis test**]
+    %% More than Two Groups
+    K --> AP{Are Groups Independent?}
+    AP --> AQ[Independent]
+    AP --> AR[Repeated Measures]
 
-    D --> AN{Type of variables}
-    AN --> AO[Both variables numeric]
-    AN --> AP[One numeric, one categorical]
-    AN --> AQ[Both variables categorical]
+    AQ --> AS{Assume Normality and Equal Variance?}
+    AS --> AT[Yes] --> AU[**One-Way ANOVA**]
+    AS --> AV[No] --> AW[Check Assumptions]
 
-    AO --> AR{Is data normally distributed?}
-    AR --> AS[Yes] --> AT[**Pearson Correlation**]
-    AR --> AU[No] --> AV[**Spearman Correlation**]
+    AW --> AX{Normality Test}
+    AX --> AY{Data Normally Distributed?}
+    AY --> AZ[Yes] --> BA{Homogeneity of Variance Test}
+    BA --> BB{Equal Variances?}
+    BB --> BC[Yes] --> AU[**One-Way ANOVA**]
+    BB --> BD[No] --> BE[**Welch's ANOVA**]
+    AY --> BF[No] --> BG[**Kruskal-Wallis test**]
 
-    AP --> AW[**t-test** or **ANOVA** (if categorical variable has more than two levels)]
-    AQ --> AX[**Chi-Square test of Independence**]
+    AR --> BH{Assume Sphericity? (Mauchly's Test)}
+    BH --> BI[Yes] --> BJ[**Repeated Measures ANOVA**]
+    BH --> BK[No] --> BL[Apply Correction (e.g., Greenhouse-Geisser)]
+    BL --> BJ[**Repeated Measures ANOVA**]
+    BK --> BM[**Friedman test**]
 
-    E --> AY[**Regression Analysis**]
-    AY --> AZ{Type of regression}
-    AZ --> BA[Linear Regression]
-    AZ --> BB[Logistic Regression]
-    AZ --> BC[Multinomial Regression]
+    %% Dependent Variable is Categorical
+    H --> BN{Type of Categorical Variable}
+    BN --> BO[Dichotomous]
+    BN --> BP[More than Two Categories]
 
-    %% Assumptions Checks
-    R & W & AB & AT & BA --> BD{Check assumptions met?}
-    BD --> BE[Yes] --> BF[Report Results]
-    BD --> BG[No] --> BH[Consider data transformation or non-parametric alternatives]
-    BH --> S & X & AC & AV & BB
+    BO --> BQ{Are Expected Frequencies ≥ 5?}
+    BQ --> BR[Yes] --> BS[**Chi-Square Test**]
+    BQ --> BT[No] --> BU[**Fisher's Exact Test**]
 
-    %% Ending
-    BF & AJ & AL & AM & AQ & AV & BB & AC & S & X --> BI[End]
+    BP --> BV[**Chi-Square Test**]
 
+    %% Assessing Relationships
+    D --> BW{Type of Variables}
+    BW --> BX[Both Continuous]
+    BW --> BY[At least One Ordinal]
+    BW --> BZ[Both Categorical]
+
+    BX --> CA{Sample Size Adequate? (n ≥ 30)}
+    CA --> CB[Yes] --> CC{Linear Relationship?}
+    CC --> CD[Yes] --> CE{Data Normally Distributed?}
+    CE --> CF[Yes] --> CG[**Pearson Correlation**]
+    CE --> CH[No] --> CI[**Spearman Correlation**]
+    CD --> CH[No] --> CI[**Spearman Correlation**]
+    CB --> CJ[No] --> CI[**Spearman Correlation**]
+
+    BY --> CI[**Spearman Correlation**]
+    BZ --> CK[**Chi-Square Test of Independence**]
+
+    %% Predicting Outcomes
+    E --> CL{Type of Outcome Variable}
+    CL --> CM[Continuous]
+    CL --> CN[Categorical]
+
+    CM --> CO{Assumptions Met?}
+    CO --> CP[Yes] --> CQ[**Linear Regression**]
+    CO --> CR[No] --> CS[Consider Transformation or Non-parametric Regression]
+
+    CN --> CT{Binary Outcome?}
+    CT --> CU[Yes] --> CV[**Logistic Regression**]
+    CT --> CW[No] --> CX[**Multinomial Logistic Regression**]
+
+    %% End
+    AC & AE & AG & AM & AO & AU & BE & BG & BJ & BM & BS & BU & BV & CG & CI & CK & CQ & CS & CV & CX --> CY[End]
