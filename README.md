@@ -10,8 +10,8 @@ flowchart TD
 
     %% Comparing Groups
     C --> F{What is your Dependent Variable Type?}
-    F --> G[Continuous (Interval/Ratio)]
-    F --> H[Categorical (Nominal/Ordinal)]
+    F --> G[Continuous]
+    F --> H[Categorical]
 
     %% Dependent Variable is Continuous
     G --> I{Number of Groups}
